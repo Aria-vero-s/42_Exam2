@@ -5,62 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 18:34:03 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/08 16:45:04 by asaulnie         ###   ########.fr       */
+/*   Created: 2024/11/08 17:57:05 by asaulnie          #+#    #+#             */
+/*   Updated: 2024/11/08 18:10:35 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <string.h>
-#include "sort_list.list.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "list.h"
 
 t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
 {
-	t_list	*sorted = NULL;
-	t_list	*current = lst;
+	int		swap;
+	t_list	*start;
 
-	while (current != NULL)
+	start = lst;
+	while (lst != NULL && lst->next != NULL)
 	{
-		t_list *next = current->next;
-		if (sorted == NULL || cmp(current->data, sorted->data))
+		if ((*cmp)(lst->data, lst->next->data) == 0)
 		{
-			current->next = sorted;
-			sorted = current;
+			swap = lst->data;
+			lst->data = lst->next->data;
+			lst->next->data = swap;
+			lst = start;
 		}
 		else
-		{
-			t_list *temp = sorted;
-			while (temp->next != NULL && !cmp(current->data, temp->next->data))
-				temp = temp->next;
-			current->next = temp->next;
-			temp->next = current;
-		}
-		current = next;
+			lst = lst->next;
 	}
-	return (sorted);
+	return (start);
 }
 
-
-int ascending(int a, int b)
+/*
+int	ascending(int a, int b)
 {
-	return a <= b;
+	return (a <= b);
 }
 
-t_list *create_node(int data)
+t_list	*create_node(int data)
 {
-	t_list *new_node = malloc(sizeof(t_list));
+	t_list	*new_node;
+
+	new_node = malloc(sizeof(t_list));
 	if (!new_node)
-		return NULL;
+		return (NULL);
 	new_node->data = data;
 	new_node->next = NULL;
 	return (new_node);
 }
 
-void print_list(t_list *lst)
+void	print_list(t_list *lst)
 {
-	t_list *current = lst;
+	t_list	*current;
+
+	current = lst;
 	while (current != NULL)
 	{
 		printf("%d -> ", current->data);
@@ -69,9 +66,12 @@ void print_list(t_list *lst)
 	printf("NULL\n");
 }
 
-int main(void)
+int	main(void)
 {
-	t_list *lst = create_node(4);
+	t_list	*lst;
+	t_list	*temp;
+
+	lst = create_node(4);
 	lst->next = create_node(2);
 	lst->next->next = create_node(3);
 	lst->next->next->next = create_node(1);
@@ -82,10 +82,10 @@ int main(void)
 	print_list(lst);
 	while (lst != NULL)
 	{
-		t_list *temp = lst;
+		temp = lst;
 		lst = lst->next;
 		free(temp);
 	}
-
 	return (0);
 }
+*/
