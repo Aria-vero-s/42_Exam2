@@ -17,6 +17,8 @@ int	is_power_of_2(unsigned int n)
 	int	temp;
 
 	temp = n & (n - 1);
+	if (n == 0)
+		return (0);
 	if (temp == 0)
 		return (1);
 	else
