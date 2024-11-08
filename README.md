@@ -1,8 +1,7 @@
-<h1 align="center">⭐️ Exam 2 Practice Solutions ⭐️</h1>
+<h1 align="center">⭐️ My Exam2 - Ecole42 ⭐️</h1>
 <p align="center">
 	This repository contains my solutions for <b>Exam 2</b> at ecole 42. The exam consists of four levels, each with a randomly selected question from a specific list of exercises. Completing all levels is necessary to pass the exam.
 </p>
----
 
 ### **Exam Overview**
 
