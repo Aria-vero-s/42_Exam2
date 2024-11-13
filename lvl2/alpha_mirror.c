@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
+/*   alpha_mirror.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 16:50:49 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/13 14:35:51 by asaulnie         ###   ########.fr       */
+/*   Created: 2024/11/08 19:12:58 by asaulnie          #+#    #+#             */
+/*   Updated: 2024/11/08 19:23:03 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	inter(char *str, char *blah)
+// a = 97 z = 122
+// 0 -> 27
+// 1 -> 26
+
+void	alpha_mirror(char *str)
 {
-	int	i;
-	int	j;
-	int	k;
+	int		i;
+	int		j;
+	char	*alpha;
+	int		end;
+	char	c;
 
 	i = 0;
-	while (str[i] != '\0')
+	j = 0;
+	alpha = "abcdefghijklmnopqrstuvwxyz";
+	end = 26;
+	while (str[i])
 	{
-		j = 0;
-		while (blah[j] != '\0')
+		while (alpha[j])
 		{
-			if (str[i] == blah[j])
+			if (str[i] == alpha[j])
 			{
-				k = 0;
-				while (k < i && str[k] != str[i])
-					k++;
-				if (k == i)
-				{
-					write(1, &str[i], 1);
-					break ;
-				}
+				c = alpha[end - i];
+				write(1, &c, 1);
 			}
 			j++;
 		}
@@ -43,8 +45,7 @@ void	inter(char *str, char *blah)
 
 int	main(int argc, char **argv)
 {
-	if (argc == 3)
-		inter(argv[1], argv[2]);
+	if (argc == 2)
+		alpha_mirror(argv[1]);
 	write(1, "\n", 1);
-	return (0);
 }
