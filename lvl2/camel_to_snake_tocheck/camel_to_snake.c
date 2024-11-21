@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bits.c                                       :+:      :+:    :+:   */
+/*   camel_to_snake.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 16:42:55 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/08 16:38:57 by asaulnie         ###   ########.fr       */
+/*   Created: 2024/11/20 19:08:05 by asaulnie          #+#    #+#             */
+/*   Updated: 2024/11/20 19:15:06 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
-#include <unistd.h>
 
-void	ft_putchar(char c)
+void	camel_to_snake(char *str)
 {
-	write(1, &c, 1);
-}
+	int		i;
+	char	c;
 
-void	print_bits(unsigned char octet)
-{
-	unsigned char	mask;
-
-	mask = 0b10000000;
-	while (mask > 0)
+	i = 0;
+	while (str[i])
 	{
-		if (octet & mask)
-			ft_putchar('1');
-		else
-			ft_putchar('0');
-		mask >>= 1;
+		while (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			c = str[i] + 32;
+			write(1, "_", 1);
+			write(1, &c, 1);
+			i++;
+		}
+		write(1, &str[i], 1);
+		i++;
 	}
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	print_bits(14);
+	if (argc == 2)
+		camel_to_snake(argv[1]);
+	write(1, "\n", 1);
 	return (0);
 }
