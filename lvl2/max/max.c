@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:49:19 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/08 16:50:22 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:35:48 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	max(int *tab, unsigned int len)
 	}
 	return (max);
 }
-
+/*
 int	main(void)
 {
 	int	*array;
@@ -41,3 +41,4 @@ int	main(void)
 	printf("the max int is:%d\n", max(array, 4));
 	return (0);
 }
+*/
