@@ -1,35 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pgcd.c                                             :+:      :+:    :+:   */
+/*   ft_rrange.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 13:25:10 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/21 13:33:30 by asaulnie         ###   ########.fr       */
+/*   Created: 2024/11/21 13:21:22 by asaulnie          #+#    #+#             */
+/*   Updated: 2024/11/21 13:24:07 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
 
-int pgcd (int a, int b)
+int ft_abs(int start, int end)
 {
-	if(a == 0)
-		return(b);
-	if(b == 0)
-		return(a);
-	return pgcd(b, a % b);
+	if(start < end)
+		return((end - start) + 1);
+	else
+		return((start - end) + 1);
 }
 
-int main(int ac, char **av)
+int *ft_rrange(int start, int end)
 {
-	if(ac != 3)
+	int	i;
+	int	len;
+	int	*res;
+
+	i = 0;
+	len = ft_abs(start, end);
+	res = (int *)malloc(sizeof(int) * len);
+	if(!res)
+		return(NULL);
+	while (i < len)
 	{
-		write(1, "\n", 1);
-		return(0);
+		if (start < end)
+		{
+			res[i] = end;
+			end--;
+			i++;
+		}
+		else
+		{
+			res[i] = end;
+			end++;
+			i++;
+		}
 	}
-	printf("%d", pgcd(atoi(av[1]), atoi(av[2])));
-	printf("\n");
+	return (res);
 }
