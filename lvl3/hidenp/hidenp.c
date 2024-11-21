@@ -1,52 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex.c                                        :+:      :+:    :+:   */
+/*   hidenp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 16:51:27 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/21 17:57:55 by asaulnie         ###   ########.fr       */
+/*   Created: 2024/11/21 19:01:25 by asaulnie          #+#    #+#             */
+/*   Updated: 2024/11/21 19:36:25 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_atoi(char *str)
+int	ft_strlen(char *str)
 {
-	int	n;
 	int	i;
 
-	n = 0;
 	i = 0;
 	while (str[i])
-	{
-		n = n * 10;
-		n = n + str[i] - '0';
 		i++;
-	}
-	return (n);
+	return (i);
 }
 
-void	print_hex(int n)
+int	hidenp(char *s1, char *s2)
 {
-	char	*hex;
+	int	i;
+	int	j;
+	int	len_s1;
 
-	hex = "0123456789abcdef";
-	if (n >= 16)
-		print_hex(n / 16);
-	n = hex[n % 16];
-	write(1, &n, 1);
+	i = 0;
+	j = 0;
+	len_s1 = ft_strlen(s1);
+	while (s2[j])
+	{
+		if (s1[i] == s2[j])
+			i++;
+		j++;
+	}
+	if (i == len_s1)
+		return (1);
+	else
+		return (0);
+
 }
 
 int	main(int argc, char **argv)
 {
-	int	result;
+	int		n;
+	char	c;
 
-	if (argc == 2)
+	if (argc == 3)
 	{
-		result = ft_atoi(argv[1]);
-		print_hex(result);
+		n = hidenp(argv[1], argv[2]);
+		c = n + '0';
+		write(1, &c, 1);
 	}
 	write(1, "\n", 1);
 	return (0);
