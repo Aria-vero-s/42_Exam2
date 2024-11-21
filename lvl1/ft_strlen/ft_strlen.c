@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:41:28 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/10/01 14:47:12 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/11/21 18:58:35 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_strlen(char *str)
 		i++;
 	return (i);
 }
-
+/*
 int	main(void)
 {
 	char	*str;
@@ -34,3 +34,4 @@ int	main(void)
 	write(1, &c, 1);
 	return (0);
 }
+*/
