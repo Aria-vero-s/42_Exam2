@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 16:49:19 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/21 15:35:48 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:40:49 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ int	max(int *tab, unsigned int len)
 	int	max;
 	int	i;
 
-	i = 0;
+	i = 1;
+	if (len == 0)
+		return (0);
 	max = tab[0];
-	while (tab[i])
+	while (i < len)
 	{
 		if (max < tab[i])
 			max = tab[i];
