@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:47:37 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/10/05 18:51:15 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:33:42 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_swap(int *a, int *b)
 	*a = *b;
 	*b = temp;
 }
-
+/*
 int	main(void)
 {
 	int	a_number;
@@ -39,3 +39,4 @@ int	main(void)
 	printf("%d\n", *b);
 	return (0);
 }
+*/
