@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 19:48:07 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/20 20:37:32 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/11/21 15:44:27 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ int	main(int argc, char **argv)
 		while (i < argc)
 		{
 			rstr_capitalizer(argv[i]);
+			write(1, "\n", 1);
 			i++;
 		}
-		write(1, "\n", 1);
 	}
 	return (0);
 }
