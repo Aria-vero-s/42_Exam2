@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:28:36 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/10/31 18:05:14 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/11/21 21:40:29 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,33 @@ int	ft_atoi(char *str)
 	sign = 1;
 	while (str[i])
 	{
-		while (str[i] == ' ' && (str[i] >= 9 || str[i] <= 13))
+		while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 			i++;
 		if (str[i] == '-')
 		{
 			sign = -1;
 			i++;
 		}
-		else if (str[i] == '+' || str[i] == '-')
+		else if (str[i] == '+')
 			i++;
 		while (str[i] >= '0' && str[i] <= '9')
 		{
 			result = result * 10 + (str[i] - '0');
 			i++;
 		}
+		if (str[i] != '\0' && (str[i] < '0' || str[i] > '9'))
+			break ;
 	}
 	return (sign * result);
 }
-
-int	main(void)
+/*
+int	main(int argc, char **argv)
 {
 	int	n;
 
-	n = ft_atoi("2");
+	if (argc == 2)
+		n = ft_atoi(argv[1]);
 	printf("%d\n", n);
 	return (0);
 }
+*/
