@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:19:55 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/10/01 14:40:55 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/11/23 19:47:27 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strcpy(char *s1, char *s2)
 	s1[i] = '\0';
 	return (s1);
 }
-
+/*
 int	main(void)
 {
 	char	dest[10];
@@ -43,3 +43,4 @@ int	main(void)
 	}
 	return (0);
 }
+*/
