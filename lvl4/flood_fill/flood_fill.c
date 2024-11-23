@@ -5,88 +5,95 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 16:52:39 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/08 17:05:27 by asaulnie         ###   ########.fr       */
+/*   Created: 2024/11/23 17:15:38 by asaulnie          #+#    #+#             */
+/*   Updated: 2024/11/23 19:37:53 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-}	t_point;
+	int x;
+	int y;
+} t_point;
 
-void	fill(char **tab, t_point size, int x, int y, char c)
+void	fill(char **current, int x, int y, int width, int height, char c)
 {
-	if (x < 0 || y < 0 || x >= size.x || y >= size.y || tab[y][x] != c)
+	if (x < 0 || y < 0 || x >= width || y >= height || current[y][x] != c)
 		return ;
-	tab[y][x] = 'F';
-	fill(tab, size, x, y + 1, c);
-	fill(tab, size, x, y - 1, c);
-	fill(tab, size, x + 1, y, c);
-	fill(tab, size, x - 1, y, c);
+	current[y][x] = 'F';
+	fill(current, x, y + 1, width, height, c);
+	fill(current, x, y - 1, width, height, c);
+	fill(current, x + 1, y, width, height, c);
+	fill(current, x - 1, y, width, height, c);
 }
 
-void	flood_fill(char **tab, t_point size, t_point begin)
+void	flood_fill(char **current, t_point size, t_point begin)
 {
 	char	c;
 
-	c = tab[begin.y][begin.x];
-	fill(tab, size, begin.x, begin.y, c);
+	c = current[begin.y][begin.x];
+	fill(current, begin.x, begin.y, size.x, size.y, c);
 }
-
-char	**make_area(char **zone, t_point size)
+/*
+char	**grid_copy(char **grid, int height)
 {
-	char	**new;
 	int		i;
-	int		j;
+	char	**grid_cpy;
 
 	i = 0;
-	new = malloc(sizeof(char *) * size.y);
-	while (i < size.y)
+	grid_cpy = malloc(sizeof(char *) * height);
+	while (i < height)
 	{
-		new[i] = malloc(size.x + 1);
-		j = 0;
-		while (j < size.x)
-		{
-			new[i][j] = zone[i][j];
-			j++;
-		}
-		new[i][size.x] = '\0';
+		grid_cpy[i] = strdup(grid[i]);
 		i++;
 	}
-	return (new);
+	return (grid_cpy);
+}
+
+void	free_grid(char **grid, int height)
+{
+	int	i;
+
+	i = 0;
+	while (i < height)
+	{
+        free(grid[i]);
+		i++;
+	}
+    free(grid);
 }
 
 int	main(void)
 {
-	t_point size = {8, 5};
-	char *zone[] = {
-		"11111111",
-		"10001001",
-		"10010001",
-		"10110001",
-		"11100001",
+	char	*grid[] = {
+	"111111",
+	"101101",
+	"100001",
+	"111111",
 	};
-	char** area = make_area(zone, size);
-	int i = 0;
-	while (i < size.y)
-	{
-		printf("%s\n", area[i]);
-		i++;
-	}
-	printf("\n");
-	t_point begin = {7, 4};
-	flood_fill(area, size, begin);
+	char	**grid_cpy;
+	int		i;
+	t_point	begin;
+	t_point	size;
+
 	i = 0;
-	while (i < size.y)
+	size.x = 6;
+	size.y = 4;
+	begin.x = 1;
+	begin.y = 1;
+	grid_cpy = grid_copy(grid, 4);
+	flood_fill(grid_cpy, size, begin);
+	while (i < 4)
 	{
-		printf("%s\n", area[i]);
+		printf("%s\n", grid_cpy[i]);
 		i++;
 	}
+	free_grid(grid_cpy, 4);
 	return (0);
 }
+*/
