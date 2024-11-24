@@ -5,91 +5,85 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 15:14:39 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/10/30 18:15:51 by asaulnie         ###   ########.fr       */
+/*   Created: 2024/11/24 16:44:23 by asaulnie          #+#    #+#             */
+/*   Updated: 2024/11/24 20:53:53 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-char	*ft_itoa(int num)
-{
-	char	*result;
-	int		len;
-	int		n;
-
-	n = num;
-	len = 0;
-	while (n != 0)
-	{
-		n = n / 10;
-		len++;
-	}
-	result = malloc((len + 1) * sizeof(char));
-	if (result == NULL)
-		return (NULL);
-	result[len] = '\0';
-	if (num == 0)
-		result[0] = '0';
-	while (num > 0 && len--)
-	{
-		result[len] = (num % 10) + '0';
-		num = num / 10;
-	}
-	return (result);
-}
 
 int	ft_atoi(char *str)
 {
-	int	result;
 	int	i;
+	int	result;
+	int	sign;
 
-	result = 0;
 	i = 0;
-	while (str[i] != '\0')
+	result = 0;
+	sign = 1;
+	while (str[i])
 	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
+		while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+			i++;
+		if (str[i] == '-')
+		{
+			sign = -1;
+			i++;
+		}
+		else if (str[i] == '+')
+			i++;
+		while (str[i] >= '0' && str[i] <= '9')
+		{
+			result = result * 10 + (str[i] - '0');
+			i++;
+		}
+		if (str[i] != '\0' && (str[i] < '0' || str[i] > '9'))
+			break ;
 	}
-	return (result);
+	return (sign * result);
 }
 
-void	ft_putstr(char *str)
+void	ft_putchar(char c)
+{
+	write (1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb < 0)
+	{
+		nb = -nb;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar(nb + '0');
+}
+
+void	tab_mult(int n)
 {
 	int	i;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = 1;
+	while (i <= 9)
 	{
-		write(1, &str[i], 1);
+		ft_putnbr(i);
+		write(1, " x ", 3);
+		ft_putnbr(n);
+		write(1, " = ", 3);
+		ft_putnbr(i * n);
+		write(1, "\n", 1);
 		i++;
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	num;
-	int	result;
-
-	i = 1;
 	if (argc == 2)
-	{
-		num = ft_atoi(argv[1]);
-		while (i <= 9)
-		{
-			result = num * i;
-			ft_putstr(ft_itoa(i));
-			ft_putstr(" x ");
-			ft_putstr(ft_itoa(num));
-			ft_putstr(" = ");
-			ft_putstr(ft_itoa(result));
-			write(1, "\n", 1);
-			i++;
-		}
-	}
+		tab_mult(ft_atoi(argv[1]));
 	else
 		write(1, "\n", 1);
 	return (0);
