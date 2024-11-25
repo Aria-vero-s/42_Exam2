@@ -5,35 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 16:50:49 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/25 15:01:42 by asaulnie         ###   ########.fr       */
+/*   Created: 2024/11/25 12:58:07 by asaulnie          #+#    #+#             */
+/*   Updated: 2024/11/25 15:03:59 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
-void	inter(char *str, char *blah)
+void	inter(char *s1, char *s2)
 {
 	int	i;
 	int	j;
 	int	k;
+	int	l;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (s1[i])
 	{
 		j = 0;
-		while (blah[j] != '\0')
+		while (s2[j])
 		{
-			if (str[i] == blah[j])
+			if (s1[i] == s2[j])
 			{
 				k = 0;
-				while (k < i && str[k] != str[i])
+				l = 0;
+				while (s1[i] != s1[k])
 					k++;
-				if (k == i)
-				{
-					write(1, &str[i], 1);
-					break ;
-				}
+				while (s2[j] != s2[l])
+					l++;
+				if (k == i && l == j)
+					write(1, &s1[i], 1);
 			}
 			j++;
 		}
