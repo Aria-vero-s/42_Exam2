@@ -43,7 +43,7 @@ int	cmp(void *data1, void *data2)
 		return (0);
 	return (1);
 }
-
+/*
 int	main(void)
 {
 	t_list	*ptr;
@@ -79,3 +79,4 @@ int	main(void)
 	}
 	return (0);
 }
+*/
