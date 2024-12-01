@@ -15,8 +15,6 @@ void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 
 	current = *begin_list;
 	previous = NULL;
-	if (current == NULL)
-		return ;
 	while (current != NULL)
 	{
 		if (cmp(current->data, data_ref) == 0)
@@ -43,7 +41,7 @@ int	cmp(void *data1, void *data2)
 		return (0);
 	return (1);
 }
-/*
+
 int	main(void)
 {
 	t_list	*ptr;
@@ -55,6 +53,9 @@ int	main(void)
 	ptr = malloc(sizeof(t_list));
 	ptr2 = malloc(sizeof(t_list));
 	ptr3 = malloc(sizeof(t_list));
+
+	if (!ptr || !ptr2 || !ptr3)
+		return (1);
 
 	ptr->data = (void *)"test1";
 	ptr->next = ptr2;
@@ -71,7 +72,7 @@ int	main(void)
 	}
 	begin_list = &ptr;
 	ft_list_remove_if(begin_list, "test1", cmp);
-	current = *begin_list;
+	current = ptr;
 	while (current != NULL)
 	{
 		printf("Data apres: %s\n", (char *)current->data);
@@ -79,4 +80,4 @@ int	main(void)
 	}
 	return (0);
 }
-*/
+
