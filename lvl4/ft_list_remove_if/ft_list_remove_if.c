@@ -54,15 +54,15 @@ int	main(void)
 	ptr2 = malloc(sizeof(t_list));
 	ptr3 = malloc(sizeof(t_list));
 
-	if (!ptr || !ptr2 || !ptr3)
-		return (1);
-
 	ptr->data = (void *)"test1";
 	ptr->next = ptr2;
 	ptr2->data = (void *)"test2";
 	ptr2->next = ptr3;
 	ptr3->data = (void *)"test3";
 	ptr3->next = NULL;
+
+	if (!ptr || !ptr2 || !ptr3)
+	return (1);
 
 	current = ptr;
 	while (current != NULL)

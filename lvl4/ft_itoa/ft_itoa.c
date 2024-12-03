@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 21:25:26 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/23 21:38:45 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:17:36 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	count_digits(int n)
 	while (n != 0)
 	{
 		n = n / 10;
-		count = count + 1;
+		count++;
 	}
 	return (count);
 }
@@ -40,22 +40,22 @@ char	*ft_itoa(int nbr)
 {
 	char *str;
 	int len;
-	int i;
+	int sign;
 
-	len = count_digits(nbr);
-	i = 0;
-	if (nbr < 0)
-		i++;
-	len = len + i;
-	str = (char *)malloc((len + 1) * sizeof(char));
+	len = count_digits(nbr); // trouver combien de digits dans nbr
+	sign = 0;
+	if (nbr < 0) // incrementer sign si negatif
+		sign++;
+	len = len + sign; // combiner len et sign
+	str = (char *)malloc((len + 1) * sizeof(char)); // malloc la str
 	if (!str)
 		return (NULL);
-	str[0] = '-';
-	str[len] = '\0';
-	while ((len - 1) >= i)
+	str[0] = '-'; // mettre le sign pour l'instant (changable)
+	str[len] = '\0'; // mettre le '\0' a la fin
+	while ((len - 1) >= sign) // pour chaque digit (negatif ou pas)
 	{
-		str[len - 1] = ft_abs(nbr % 10) + '0';
-		nbr /= 10;
+		str[len - 1] = ft_abs(nbr % 10) + '0'; // ajouter le digit de la fin
+		nbr = nbr / 10; // enlever le dernier digit de nbr
 		len--;
 	}
 	return (str);
