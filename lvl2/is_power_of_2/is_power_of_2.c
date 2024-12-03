@@ -10,26 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <stdio.h>
+
+// 2x2 4
+// 2x2x2 8
+// 2x2x2x2 16
+// 2x2x2x2x2 32
 
 int	is_power_of_2(unsigned int n)
 {
-	int	temp;
-
-	temp = n & (n - 1);
 	if (n == 0)
 		return (0);
-	if (temp == 0)
+	while (n % 2 == 0)
+	{
+		n = n / 2;
+	}
+	if (n == 1)
 		return (1);
 	else
 		return (0);
-}
 
+}
+/*
 int	main(void)
 {
-	int	n;
+	int	i;
 
-	n = is_power_of_2(7);
-	printf("%d\n", n);
+	i = 0;
+	while (i <= 128)
+	{
+		printf("n: %d = res: %d\n", i, is_power_of_2(i));
+		i++;
+	}
 	return (0);
 }
+*/
