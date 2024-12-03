@@ -6,18 +6,13 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 16:42:55 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/21 13:35:36 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:03:20 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
 
 void	print_bits(unsigned char octet)
 {
@@ -27,10 +22,10 @@ void	print_bits(unsigned char octet)
 	while (mask > 0)
 	{
 		if (octet & mask)
-			ft_putchar('1');
+			write(1, "1", 1);
 		else
-			ft_putchar('0');
-		mask >>= 1;
+			write(1, "0", 1);
+		mask = mask / 2;
 	}
 }
 /*
