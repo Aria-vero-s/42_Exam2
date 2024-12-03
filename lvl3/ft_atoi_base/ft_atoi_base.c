@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 16:55:22 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/27 22:31:20 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:53:03 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,20 @@ int	ft_atoi_base(const char *str, int str_base)
 	sign = 1;
 	if (str_base < 2 || str_base > 16)
 		return (0);
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
+	else if (*str <= ' ')
+		str++;
 	while (*str)
 	{
-		if (*str == '-')
-		{
-			sign = -1;
-			str++;
-		}
-		else if (*str <= ' ')
-			str++;
-		else
-		{
-			digit = hexa_to_number(*str | 32);
-			if (digit == -1 || digit >= str_base)
-				break ;
-			n = (n * str_base) + digit;
-			str++;
-		}
+		digit = hexa_to_number(*str | 32);
+		if (digit == -1 || digit >= str_base)
+			break ;
+		n = (n * str_base) + digit;
+		str++;
 	}
 	return (sign * n);
 }
