@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 22:42:27 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/27 22:51:09 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:50:34 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,21 @@ void	sort_int_tab(int *tab, unsigned int size)
 	}
 }
 /*
-void print_tab(int *tab, unsigned int size)
+int main(void)
 {
+	int				tab[] = {5, -3, 8, 1, 4, 2, 7, 6, 11};
+	unsigned int	size;
 	unsigned int	i;
 
-	i =0;
+	size = 9;
+	i = 0;
+	sort_int_tab(tab, size);
 	while (i < size)
 	{
 		printf("%d ", tab[i]);
 		i++;
 	}
 	printf("\n");
-}
-
-int main(void)
-{
-	int tab[] = {5, 3, 8, 1, 4, 2, 7, 6};
-	unsigned int size = sizeof(tab) / sizeof(tab[0]);
-	printf("Avant: ");
-	print_tab(tab, size);
-	sort_int_tab(tab, size);
-	printf("Après: ");
-	print_tab(tab, size);
 	return (0);
 }
 */

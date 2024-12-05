@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:07:43 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/21 15:24:58 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/03 15:55:04 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	fprime(unsigned int nb)
 			if (nb % prime == 0)
 			{
 				printf("%d", prime);
-				nb /= prime;
+				nb = nb / prime;
 				if (nb > 1)
 					printf("*");
 				prime--;
