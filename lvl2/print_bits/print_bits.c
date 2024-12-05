@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 16:42:55 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/12/03 17:03:20 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/03 21:00:06 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ void	print_bits(unsigned char octet)
 		mask = mask / 2;
 	}
 }
-/*
+
 int	main(void)
 {
 	print_bits(14);
 	return (0);
 }
-*/
