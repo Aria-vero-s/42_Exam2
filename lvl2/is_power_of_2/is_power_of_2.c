@@ -12,6 +12,7 @@
 
 #include <unistd.h>
 #include <stdio.h>
+#include <limits.h>
 
 // 2x2 4
 // 2x2x2 8
@@ -20,29 +21,27 @@
 
 int	is_power_of_2(unsigned int n)
 {
+	unsigned int	i;
+
+	i = 2;
 	if (n == 0)
 		return (0);
-	while (n % 2 == 0)
-	{
-		n = n / 2;
-	}
-	if (n == 1)
+	else if (n == 1)
 		return (1);
-	else
+	else if (n > INT_MAX)
 		return (0);
-
+	while (i <= n)
+	{
+		if (i == n)
+			return (1);
+		i = (i * 2);
+	}
+	return (0);
 }
 /*
-int	main(void)
+int	main()
 {
-	int	i;
-
-	i = 0;
-	while (i <= 128)
-	{
-		printf("n: %d = res: %d\n", i, is_power_of_2(i));
-		i++;
-	}
+	printf("%d\n", is_power_of_2(-3));
 	return (0);
 }
 */
