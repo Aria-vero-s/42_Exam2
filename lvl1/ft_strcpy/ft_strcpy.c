@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 14:19:55 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/26 11:11:47 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:56:16 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,20 @@ char	*ft_strcpy(char *s1, char *s2)
 	return (s1);
 }
 /*
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 int	main(void)
 {
-	char	dest[10];
-	char	*src;
+	char	*src = "test";
+	char	*dest = malloc(sizeof(char) * ft_strlen(src));
 
-	src = "test";
 	printf("ft: %s\n", ft_strcpy(dest, src));
 	printf("real: %s\n", strcpy(dest, src));
 	return (0);

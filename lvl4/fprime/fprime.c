@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:07:43 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/12/08 16:24:55 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/09 20:54:07 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,6 @@ void	fprime(unsigned int nb)
 			prime++;
 		}
 	}
-}
-
-int	main()
-{
-	unsigned int nb;
-
-	nb = 42;
-	fprime(nb);
-	return (0);
 }
 
 int	main(int ac, char **av)
