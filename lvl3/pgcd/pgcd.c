@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:25:10 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/21 13:33:30 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/09 21:28:35 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,17 @@
 
 int pgcd (int a, int b)
 {
-	if(a == 0)
+	if (a == 0)
 		return(b);
-	if(b == 0)
+	if (b == 0)
 		return(a);
-	return pgcd(b, a % b);
+	return (pgcd(b, a % b));
 }
 
-int main(int ac, char **av)
+int	main(int argc, char **argv)
 {
-	if(ac != 3)
-	{
+	if (argc == 3)
+		printf("%d\n", pgcd(atoi(argv[1]), atoi(argv[2])));
+	else
 		write(1, "\n", 1);
-		return(0);
-	}
-	printf("%d", pgcd(atoi(av[1]), atoi(av[2])));
-	printf("\n");
 }
