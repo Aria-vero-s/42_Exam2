@@ -6,7 +6,7 @@
 /*   By: asaulnie <asaulnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:21:40 by asaulnie          #+#    #+#             */
-/*   Updated: 2024/11/21 13:24:13 by asaulnie         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:17:45 by asaulnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int *ft_range(int start, int end)
 	int	*res;
 
 	i = 0;
+	len = 
 	len = ft_abs(start, end);
 	res = (int *)malloc(sizeof(int) * len);
 	while (i < len)
